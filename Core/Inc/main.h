@@ -57,6 +57,20 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define Hazards_Pin GPIO_PIN_4
+#define Hazards_GPIO_Port GPIOC
+#define Headlights_Pin GPIO_PIN_0
+#define Headlights_GPIO_Port GPIOB
+#define Right_Turn_Pin GPIO_PIN_1
+#define Right_Turn_GPIO_Port GPIOB
+#define Push_To_Talk_Pin GPIO_PIN_14
+#define Push_To_Talk_GPIO_Port GPIOB
+#define Left_Turn_Pin GPIO_PIN_15
+#define Left_Turn_GPIO_Port GPIOB
+#define Horn_Pin GPIO_PIN_6
+#define Horn_GPIO_Port GPIOC
+#define Forward_Reverse_Pin GPIO_PIN_8
+#define Forward_Reverse_GPIO_Port GPIOC
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
