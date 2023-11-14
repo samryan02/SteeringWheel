@@ -21,7 +21,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "pots_avg.c"
+#include <string.h>
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -82,7 +84,8 @@ static void MX_ADC2_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+  uint16_t raw1, raw2, raw3, raw4, raw5, raw6, result1, result2;
+  char msg[10];
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -123,6 +126,44 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
+	  // Get all ADCs value
+	  HAL_ADC_Start(&hadc1);
+	  HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+	  raw1 = HAL_ADC_GetValue(&hadc1);
+
+	  HAL_ADC_Start(&hadc2);
+	  HAL_ADC_PollForConversion(&hadc2, HAL_MAX_DELAY);
+	  raw2 = HAL_ADC_GetValue(&hadc2);
+
+	  //	  HAL_ADC_Start(&hadc3);
+	  //	  HAL_ADC_PollForConversion(&hadc3, HAL_MAX_DELAY);
+	  //	  raw3 = HAL_ADC_GetValue(&hadc3);
+	  //
+	  //	  HAL_ADC_Start(&hadc4);
+	  //	  HAL_ADC_PollForConversion(&hadc4, HAL_MAX_DELAY);
+	  //	  raw4 = HAL_ADC_GetValue(&hadc4);
+
+	  //	  HAL_ADC_Start(&hadc5);
+	  //	  HAL_ADC_PollForConversion(&hadc5, HAL_MAX_DELAY);
+	  //	  raw5 = HAL_ADC_GetValue(&hadc5);
+	  //
+	  //	  HAL_ADC_Start(&hadc6);
+	  //	  HAL_ADC_PollForConversion(&hadc6, HAL_MAX_DELAY);
+	  //	  raw6 = HAL_ADC_GetValue(&hadc6);
+
+	  //	  result1 = Median(raw1, raw2, raw3);
+	  //	  result2 = Median(raw4, raw5, raw6);
+
+	  // Convert to string and print
+	  sprintf(msg, "%hu\r\n", raw1);
+	  HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+
+	  sprintf(msg, "%hu\r\n", raw2);
+	  HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+
+
+	  // Delay
+	  HAL_Delay(1);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
